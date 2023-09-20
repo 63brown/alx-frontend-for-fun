@@ -61,7 +61,7 @@
   
     /** HEADER **/
     --header-padding: 4rem 0 0;
-    
+
     /** FOOTER **/
     --footer-padding: 5rem 0 1rem;
   
@@ -207,9 +207,6 @@
   /* Navbar
       ============================= */
   
-  .navbar-menu {
-    float: right;
-  }
   
   .nav {
     margin: 0;
