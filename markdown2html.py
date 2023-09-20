@@ -1,19 +1,27 @@
 #!/usr/bin/python3
 """markdown2html"""
-import os
 import sys
+import os
+import markdown
 
-len = len(sys.argv)
+if len(sys.argv) < 3:
+    sys.stderr.write("Usage: ./markdown2html.py <input_file> <output_file>\n")
+    sys.exit(1)
 
-if not len < 3:
-    md = sys.argv[1]
-    out = sys.argv[2]
+input_file = sys.argv[1]
+output_file = sys.argv[2]
 
-if len < 3:
-    print("Usage: ./markdown2html.py README.md README.html")
-    exit(1)
+if not os.path.isfile(input_file):
+    sys.stderr.write(f"Missing {input_file}\n")
+    sys.exit(1)
 
-if not os.path.exists(md):
-    print("Missing {}".format(md))
-    exit(1)
-exit(0)
+with open(input_file, 'r') as f:
+    markdown_content = f.read()
+
+html_content = markdown.markdown(markdown_content)
+
+with open(output_file, 'w') as f:
+    f.write(html_content)
+
+# Exit with a success code
+sys.exit(0)
